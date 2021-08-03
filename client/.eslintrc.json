@@ -1,10 +1,10 @@
+
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2020": true
   },
   "extends": [
-    "eslint:recommended",
     "plugin:react/recommended"
   ],
   "parserOptions": {
@@ -15,26 +15,55 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "only-warn"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
+    "object-curly-spacing": [
+      2,
+      "always"
+    ],
+    "require-jsdoc": 0,
+    "max-len": [
+      2,
+      {
+        "code": 1200,
+        "tabWidth": 2
+      }
+    ],
     "indent": [
-      "warn",
-      "tab"
+      2,
+      2,
+      {
+        "MemberExpression": 1,
+        "SwitchCase": 1
+      }
     ],
-    "linebreak-style": [
-      "warn",
-      "unix"
-    ],
-    "quotes": [
-      "warn",
-      "single"
-    ],
+    "operator-linebreak": 0,
     "semi": [
-      "warn",
-      "never"
+      2,
+      "always"
     ],
+    "camelcase": 0,
+    "new-cap": 0,
+    "react/display-name": 0,
+    "react/no-string-refs": 0,
+    "react/no-deprecated": 0,
     "react/prop-types": 0,
-    "no-unused-vars": 0
+    "react/jsx-no-target-blank": 0,
+    "react/js": 0,
+
+    "react/jsx-first-prop-new-line": [1, "multiline"],
+    "react/jsx-max-props-per-line": [1,
+      {
+        "maximum": 1,
+        "when": "multiline"
+      }
+    ]
   }
 }

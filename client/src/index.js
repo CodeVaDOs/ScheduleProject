@@ -1,21 +1,21 @@
-import React, {Suspense} from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import store from './redux/store'
-import {Provider} from 'react-redux'
-import {BrowserRouter} from 'react-router-dom'
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import store from './redux/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-const reduxStore = store()
+const reduxStore = store();
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={reduxStore}>
-			<Suspense fallback={'Loading...'}>
-				<BrowserRouter>
-					<App/>
-				</BrowserRouter>
-			</Suspense>
-		</Provider>
-	</React.StrictMode>,
-	document.getElementById('root')
-)
+  <React.StrictMode>
+    <Provider store={reduxStore}>
+      <Suspense fallback={'Loading...'}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Suspense>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);

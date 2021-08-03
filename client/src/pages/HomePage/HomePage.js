@@ -1,14 +1,15 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 
 const HomePage = () => {
 
-	return (
-		<div>
-		</div>
-	)
-}
+  return (
+    <div>
+      test
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
