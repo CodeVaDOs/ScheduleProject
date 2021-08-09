@@ -2,8 +2,8 @@ package ua.kiev.kmrf.scheduler.entity.schedule;
 
 import lombok.*;
 import ua.kiev.kmrf.scheduler.entity.BaseEntity;
-import ua.kiev.kmrf.scheduler.entity.Group;
-import ua.kiev.kmrf.scheduler.entity.Lesson;
+import ua.kiev.kmrf.scheduler.entity.group.Group;
+import ua.kiev.kmrf.scheduler.entity.lesson.Lesson;
 
 import javax.persistence.*;
 import java.util.Date;

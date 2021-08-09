@@ -1,8 +1,9 @@
-package ua.kiev.kmrf.scheduler.entity;
+package ua.kiev.kmrf.scheduler.entity.lesson;
 
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import ua.kiev.kmrf.scheduler.entity.BaseEntity;
 import ua.kiev.kmrf.scheduler.entity.schedule.PairSchedule;
 
 import javax.persistence.Entity;

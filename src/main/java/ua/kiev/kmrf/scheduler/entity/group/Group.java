@@ -1,9 +1,10 @@
-package ua.kiev.kmrf.scheduler.entity;
+package ua.kiev.kmrf.scheduler.entity.group;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import ua.kiev.kmrf.scheduler.entity.BaseEntity;
 import ua.kiev.kmrf.scheduler.entity.schedule.PairSchedule;
 import ua.kiev.kmrf.scheduler.entity.user.User;
 

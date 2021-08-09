@@ -3,7 +3,7 @@ package ua.kiev.kmrf.scheduler.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import ua.kiev.kmrf.scheduler.entity.Group;
+import ua.kiev.kmrf.scheduler.entity.group.Group;
 import ua.kiev.kmrf.scheduler.service.GroupService;
 
 import java.util.List;

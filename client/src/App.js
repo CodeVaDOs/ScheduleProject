@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import AppContainer from './containers/AppContainer';
-import { CssBaseline, makeStyles } from '@material-ui/core';
+import { createMuiTheme, CssBaseline, makeStyles, MuiThemeProvider, useTheme } from '@material-ui/core';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import { useSelector } from 'react-redux';
@@ -26,29 +26,40 @@ const drawerWidth = 240;
 
 function App() {
   const isAuthorized = useSelector((state) => state.auth.authorized);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Poppins',
+        'sans-serif'
+      ].join(',')
+    }
+  });
 
   const handleDrawer = () => setOpen(prev => !prev);
 
   const classes = useStyles({ open, drawerWidth });
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      {isAuthorized && <Header
-        isSidebarOpen={open}
-        handleDrawer={handleDrawer}
-        drawerWidth={drawerWidth} />}
+    <MuiThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <CssBaseline />
+        {isAuthorized && <Header
+          isSidebarOpen={open}
+          handleDrawer={handleDrawer}
+          drawerWidth={drawerWidth} />}
 
-      {isAuthorized && <Sidebar
-        open={open}
-        drawerWidth={drawerWidth} />}
+        {isAuthorized && <Sidebar
+          open={open}
+          drawerWidth={drawerWidth} />}
 
-      <div className={classes.container}>
-        <Suspense fallback={'Loading...'}>
-          <AppContainer />
-        </Suspense>
+        <div className={classes.container}>
+          <Suspense fallback={'Loading...'}>
+            <AppContainer />
+          </Suspense>
+        </div>
       </div>
-    </div>
+    </MuiThemeProvider>
   );
 }
 

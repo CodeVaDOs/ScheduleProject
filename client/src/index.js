@@ -4,6 +4,7 @@ import App from './App';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core';
 
 const reduxStore = store();
 
@@ -12,7 +13,7 @@ ReactDOM.render(
     <Provider store={reduxStore}>
       <Suspense fallback={'Loading...'}>
         <BrowserRouter>
-          <App />
+            <App />
         </BrowserRouter>
       </Suspense>
     </Provider>

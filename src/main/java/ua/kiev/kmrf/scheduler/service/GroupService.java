@@ -1,12 +1,10 @@
 package ua.kiev.kmrf.scheduler.service;
 
 import org.springframework.stereotype.Service;
-import ua.kiev.kmrf.scheduler.entity.Group;
-import ua.kiev.kmrf.scheduler.entity.user.User;
+import ua.kiev.kmrf.scheduler.entity.group.Group;
 import ua.kiev.kmrf.scheduler.repository.GroupRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GroupService {

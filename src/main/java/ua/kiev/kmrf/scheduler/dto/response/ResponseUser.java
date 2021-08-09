@@ -2,7 +2,6 @@ package ua.kiev.kmrf.scheduler.dto.response;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ua.kiev.kmrf.scheduler.entity.Group;
 import ua.kiev.kmrf.scheduler.entity.user.Role;
 import ua.kiev.kmrf.scheduler.entity.user.User;
 

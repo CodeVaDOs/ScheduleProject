@@ -8,6 +8,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ua.kiev.kmrf.scheduler.dto.request.RequestAuth;
 import ua.kiev.kmrf.scheduler.dto.request.RequestPassword;
+import ua.kiev.kmrf.scheduler.dto.request.RequestUser;
+import ua.kiev.kmrf.scheduler.dto.request.groups.OnCreate;
 import ua.kiev.kmrf.scheduler.exception.JwtAuthenticationException;
 import ua.kiev.kmrf.scheduler.service.AuthService;
 import ua.kiev.kmrf.scheduler.service.ResetPasswordService;
@@ -42,6 +44,16 @@ public class AuthController {
             return ResponseEntity.ok(authService.authenticate(request.getEmail(), request.getPassword()));
         } catch (AuthenticationException e) {
             return new ResponseEntity<>("Invalid email/password combination", HttpStatus.FORBIDDEN);
+        }
+    }
+
+    @Validated(OnCreate.class)
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody @Valid RequestUser request) {
+        try {
+            return ResponseEntity.ok(authService.register(request));
+        } catch (AuthenticationException e) {
+            return new ResponseEntity<>("Error with registration: " + e.getMessage(), HttpStatus.FORBIDDEN);
         }
     }
 

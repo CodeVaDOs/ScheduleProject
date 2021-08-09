@@ -1,48 +1,60 @@
 import React from 'react';
-import { Drawer, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
+import { Divider, Drawer, Icon, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Dashboard, Group } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { Dashboard, Group, SupervisedUserCircle } from '@material-ui/icons';
+import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   drawerPaper: props => ({
     width: props.open ? props.drawerWidth : 0,
     whiteSpace: 'nowrap',
+    backgroundColor: '#2A3042',
+    border: 'none',
+    color: '#A6B0CF',
     paddingTop: '68px',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   }),
   link: {
     textDecoration: 'none',
     color: 'inherit'
   }
-
 }));
 
-const listOfLinks =  [
+
+const listOfLinks = [
   {
     to: '/',
     linkText: 'Dashboard',
-    linkIcon: <Dashboard/>
+    linkIcon: Dashboard
   },
   {
     to: '/groups',
     linkText: 'Groups',
-    linkIcon: <Group/>
+    linkIcon: Group
   },
-]
+  {
+    to: '/users',
+    linkText: 'Users',
+    linkIcon: SupervisedUserCircle
+  }
+];
 
 const Sidebar = ({ open, drawerWidth }) => {
   const classes = useStyles({ drawerWidth, open });
+
+  const activePath = useLocation().pathname;
+
+  const getIconColorStyle = (isActive) => ({ color: isActive ? '#fff' : '#A6B0CF' });
 
   return (
     <Drawer
@@ -54,12 +66,12 @@ const Sidebar = ({ open, drawerWidth }) => {
       anchor="left">
 
       {listOfLinks.map(l => (
-        <Link className={classes.link} to={l.to}>
+        <Link style={getIconColorStyle(l.to === activePath)} className={classes.link} to={l.to}>
           <ListItem button>
             <ListItemIcon>
-              {l.linkIcon}
+              <Icon component={l.linkIcon} style={getIconColorStyle(l.to === activePath)} />
             </ListItemIcon>
-            <ListItemText primary={l.linkText}/>
+            <ListItemText primary={l.linkText} />
           </ListItem>
         </Link>
       ))}

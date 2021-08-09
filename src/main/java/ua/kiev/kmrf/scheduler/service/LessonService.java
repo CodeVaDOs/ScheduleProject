@@ -1,10 +1,8 @@
 package ua.kiev.kmrf.scheduler.service;
 
 import org.springframework.stereotype.Service;
-import ua.kiev.kmrf.scheduler.entity.Lesson;
+import ua.kiev.kmrf.scheduler.entity.lesson.Lesson;
 import ua.kiev.kmrf.scheduler.repository.LessonRepository;
-
-import java.util.Optional;
 
 @Service
 public class LessonService {

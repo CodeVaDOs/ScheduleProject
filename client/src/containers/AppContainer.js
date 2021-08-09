@@ -18,6 +18,13 @@ const routes = [
     component: lazy(() => import('../pages/GroupPage/GroupPage'))
   },
   {
+    isPublic: false,
+    isAdminRoute: true,
+    exact: true,
+    path: '/users',
+    component: lazy(() => import('../pages/UsersPage/UsersPage'))
+  },
+  {
     isPublic: true,
     isAdminRoute: false,
     exact: true,

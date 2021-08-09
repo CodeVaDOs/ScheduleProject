@@ -4,7 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ua.kiev.kmrf.scheduler.entity.BaseEntity;
-import ua.kiev.kmrf.scheduler.entity.Group;
+import ua.kiev.kmrf.scheduler.entity.group.Group;
 import ua.kiev.kmrf.scheduler.entity.schedule.PairSchedule;
 
 import javax.persistence.*;
@@ -43,4 +43,9 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<PairSchedule> pairSchedules = new ArrayList<>();
+
+    public User(String password, String email) {
+        this.password = password;
+        this.email = email;
+    }
 }

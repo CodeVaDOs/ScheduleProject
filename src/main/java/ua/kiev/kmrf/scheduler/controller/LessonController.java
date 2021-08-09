@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.kiev.kmrf.scheduler.entity.Lesson;
+import ua.kiev.kmrf.scheduler.entity.lesson.Lesson;
 import ua.kiev.kmrf.scheduler.service.LessonService;
 
 @RestController
