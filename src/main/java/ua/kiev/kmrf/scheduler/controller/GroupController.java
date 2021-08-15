@@ -2,7 +2,10 @@ package ua.kiev.kmrf.scheduler.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ua.kiev.kmrf.scheduler.dto.request.RequestGroup;
+import ua.kiev.kmrf.scheduler.dto.request.groups.OnCreate;
 import ua.kiev.kmrf.scheduler.entity.group.Group;
 import ua.kiev.kmrf.scheduler.service.GroupService;
 
@@ -19,7 +22,9 @@ public class GroupController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('write')")
-    public ResponseEntity<Group> createGroup(@RequestBody Group group) {
+    @Validated(OnCreate.class)
+    public ResponseEntity<Group> createGroup(@RequestBody RequestGroup requestGroup) {
+        Group group = requestGroup.toEntity();
         return ResponseEntity.ok(groupService.createGroup(group));
     }
 
@@ -27,5 +32,11 @@ public class GroupController {
     @PreAuthorize("hasAuthority('getTotal')")
     public ResponseEntity<List<Group>> getAllGroups() {
         return ResponseEntity.ok(groupService.getAllGroups());
+    }
+
+    @DeleteMapping
+    @PreAuthorize("hasAuthority('write')")
+    public ResponseEntity<Long> deleteGroup(@RequestParam Long id) {
+        return ResponseEntity.ok(groupService.deleteGroup(id));
     }
 }

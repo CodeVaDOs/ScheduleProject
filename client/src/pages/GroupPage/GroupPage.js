@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { useFetch } from '../../hooks/useFetch';
 import GroupTable from './GroupTable';
+import CreateGroupModal from './CreateGroupModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { GROUPS_ACTIONS } from '../../redux/groups/action';
+import { useModal } from '../../hooks/useModal';
+import GroupInfoModal from './GroupInfoModal';
 
 const useStyles = makeStyles(() => ({
   container: {}
@@ -9,18 +14,24 @@ const useStyles = makeStyles(() => ({
 
 const GroupPage = () => {
   const classes = useStyles();
+  const createModal = useModal();
+  const infoModal = useModal();
 
-  const [{ data, loading }, getData] = useFetch({
-    initData: [],
-    url: '/groups',
-    method: 'GET'
-  });
+  const dispatch = useDispatch();
+  const groupsList = useSelector(state => state.groups.groupsList);
 
-  console.log(data);
+
+  useEffect(() => {
+    dispatch(GROUPS_ACTIONS.getGroups());
+  }, []);
+
 
   return (
     <div className={classes.container}>
-      <GroupTable groups={data} />
+      <GroupTable groups={groupsList} createModal={createModal} infoModal={infoModal} />
+
+      <CreateGroupModal handler={createModal} />
+      <GroupInfoModal handler={infoModal} />
     </div>
   );
 };

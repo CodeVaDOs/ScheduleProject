@@ -43,7 +43,11 @@ const useStyles = makeStyles(theme => ({
   exitButton: {
     padding: 0,
     minWidth: 'unset',
-    marginLeft: '20px'
+    marginLeft: '20px',
+    cursor: 'pointer'
+  },
+  headerIcon: {
+    cursor: 'pointer'
   }
 }));
 
@@ -58,9 +62,9 @@ const Header = ({ isSidebarOpen, drawerWidth, handleDrawer }) => {
 
   return (
     <AppBar className={clsx(classes.header, isSidebarOpen && classes.appBarShift)}>
-      <Menu onClick={handleDrawer}/>
+      <Menu className={classes.headerIcon} onClick={handleDrawer}/>
       <div className={classes.rightContainer}>
-        <Typography variant="h6">Welcome, {user.firstName} {user.lastName}!</Typography>
+        <Typography variant="h6">Добро пожаловать, {user.firstName} {user.lastName}!</Typography>
         <Button className={classes.exitButton} onClick={logOut}><ExitToApp/></Button>
       </div>
     </AppBar>

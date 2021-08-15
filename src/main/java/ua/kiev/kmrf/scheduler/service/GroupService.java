@@ -5,6 +5,7 @@ import ua.kiev.kmrf.scheduler.entity.group.Group;
 import ua.kiev.kmrf.scheduler.repository.GroupRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GroupService {
@@ -21,4 +22,10 @@ public class GroupService {
     public List<Group> getAllGroups() {
         return groupRepository.findAll();
     }
+
+    public Long deleteGroup(Long id) {
+        groupRepository.deleteById(id);
+        return id;
+    }
+
 }

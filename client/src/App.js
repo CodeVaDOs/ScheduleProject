@@ -26,7 +26,7 @@ const drawerWidth = 240;
 
 function App() {
   const isAuthorized = useSelector((state) => state.auth.authorized);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const theme = createMuiTheme({
     typography: {

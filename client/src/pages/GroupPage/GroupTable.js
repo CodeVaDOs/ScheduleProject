@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
 
-const GroupTable = ({ groups }) => {
+const GroupTable = ({ groups, createModal, infoModal }) => {
 
   const createRow = (group) => ({ name: group.name });
 
@@ -12,7 +12,7 @@ const GroupTable = ({ groups }) => {
     <TableContainer component={Paper}>
       <Table size="small">
         <TableHead>
-          <TableCell>Group Name</TableCell>
+          <TableCell>Название группы</TableCell>
         </TableHead>
         <TableBody>
           {groups.map(createRow).map(group => (
@@ -23,7 +23,7 @@ const GroupTable = ({ groups }) => {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <Button>Создать группу</Button>
+            <Button onClick={createModal.handleModal}>Создать группу</Button>
           </TableRow>
         </TableFooter>
       </Table>

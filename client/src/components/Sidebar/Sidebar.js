@@ -34,17 +34,17 @@ const useStyles = makeStyles((theme) => ({
 const listOfLinks = [
   {
     to: '/',
-    linkText: 'Dashboard',
+    linkText: 'Главная',
     linkIcon: Dashboard
   },
   {
     to: '/groups',
-    linkText: 'Groups',
+    linkText: 'Группы',
     linkIcon: Group
   },
   {
     to: '/users',
-    linkText: 'Users',
+    linkText: 'Пользователи',
     linkIcon: SupervisedUserCircle
   }
 ];
