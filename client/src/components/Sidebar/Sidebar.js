@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider, Drawer, Icon, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { Dashboard, Group, SupervisedUserCircle } from '@material-ui/icons';
+import { Chat, Dashboard, Group, Schedule, SupervisedUserCircle } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,6 +36,16 @@ const listOfLinks = [
     to: '/',
     linkText: 'Главная',
     linkIcon: Dashboard
+  },
+  {
+    to: '/schedule',
+    linkText: 'Расписание',
+    linkIcon: Schedule
+  },
+  {
+    to: '/chat',
+    linkText: 'Сообщения',
+    linkIcon: Chat
   },
   {
     to: '/groups',

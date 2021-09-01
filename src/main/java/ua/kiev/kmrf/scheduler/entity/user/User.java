@@ -5,7 +5,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ua.kiev.kmrf.scheduler.entity.BaseEntity;
 import ua.kiev.kmrf.scheduler.entity.group.Group;
-import ua.kiev.kmrf.scheduler.entity.schedule.PairSchedule;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package ua.kiev.kmrf.scheduler.service;
+package ua.kiev.kmrf.scheduler.service.auth;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import ua.kiev.kmrf.scheduler.entity.user.User;
 import ua.kiev.kmrf.scheduler.exception.JwtAuthenticationException;
 import ua.kiev.kmrf.scheduler.exception.NoDataFoundException;
 import ua.kiev.kmrf.scheduler.exception.UserAlreadyExistException;
-import ua.kiev.kmrf.scheduler.repository.RefreshTokenRepository;
+import ua.kiev.kmrf.scheduler.repository.auth.RefreshTokenRepository;
 import ua.kiev.kmrf.scheduler.repository.UserRepository;
 import ua.kiev.kmrf.scheduler.security.JwtTokenProvider;
 

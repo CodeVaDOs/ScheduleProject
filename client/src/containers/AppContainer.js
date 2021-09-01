@@ -25,6 +25,20 @@ const routes = [
     component: lazy(() => import('../pages/UsersPage/UsersPage'))
   },
   {
+    isPublic: false,
+    isAdminRoute: false,
+    exact: true,
+    path: '/chat',
+    component: lazy(() => import('../pages/ChatPage/ChatPage'))
+  },
+  {
+    isPublic: false,
+    isAdminRoute: false,
+    exact: true,
+    path: '/schedule',
+    component: lazy(() => import('../pages/SchedulePage/SchedulePage'))
+  },
+  {
     isPublic: true,
     isAdminRoute: false,
     exact: true,

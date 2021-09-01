@@ -1,4 +1,4 @@
-package ua.kiev.kmrf.scheduler.service;
+package ua.kiev.kmrf.scheduler.service.auth;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

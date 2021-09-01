@@ -1,4 +1,4 @@
-package ua.kiev.kmrf.scheduler.entity.group;
+package ua.kiev.kmrf.scheduler.entity.schedule;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -6,7 +6,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ua.kiev.kmrf.scheduler.entity.BaseEntity;
 import ua.kiev.kmrf.scheduler.entity.schedule.Schedule;
-import ua.kiev.kmrf.scheduler.entity.user.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,20 +13,17 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "groups")
+@Table(name = "lesson_types")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Group extends BaseEntity {
-    private String name;
+public class LessonType extends BaseEntity {
+    @Column(name = "type")
+    private String lessonType;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
-    private List<User> students = new ArrayList<>();
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "lesson_type", fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Schedule> pairSchedules = new ArrayList<>();
 }

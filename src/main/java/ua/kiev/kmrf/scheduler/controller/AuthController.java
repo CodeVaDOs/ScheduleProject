@@ -10,9 +10,8 @@ import ua.kiev.kmrf.scheduler.dto.request.RequestAuth;
 import ua.kiev.kmrf.scheduler.dto.request.RequestPassword;
 import ua.kiev.kmrf.scheduler.dto.request.RequestUser;
 import ua.kiev.kmrf.scheduler.dto.request.groups.OnCreate;
-import ua.kiev.kmrf.scheduler.exception.JwtAuthenticationException;
-import ua.kiev.kmrf.scheduler.service.AuthService;
-import ua.kiev.kmrf.scheduler.service.ResetPasswordService;
+import ua.kiev.kmrf.scheduler.service.auth.AuthService;
+import ua.kiev.kmrf.scheduler.service.auth.ResetPasswordService;
 
 //import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
