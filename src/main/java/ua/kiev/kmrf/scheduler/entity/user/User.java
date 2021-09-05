@@ -39,9 +39,9 @@ public class User extends BaseEntity {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<PairSchedule> pairSchedules = new ArrayList<>();
+    public String getGroupName() {
+        return group.getName();
+    }
 
     public User(String password, String email) {
         this.password = password;

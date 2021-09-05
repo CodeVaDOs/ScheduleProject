@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ua.kiev.kmrf.scheduler.dto.request.RequestAuth;
-import ua.kiev.kmrf.scheduler.dto.request.RequestPassword;
-import ua.kiev.kmrf.scheduler.dto.request.RequestUser;
+import ua.kiev.kmrf.scheduler.dto.request.auth.AuthRequest;
+import ua.kiev.kmrf.scheduler.dto.request.auth.PasswordRequest;
+import ua.kiev.kmrf.scheduler.dto.request.UserRequest;
 import ua.kiev.kmrf.scheduler.dto.request.groups.OnCreate;
 import ua.kiev.kmrf.scheduler.service.auth.AuthService;
 import ua.kiev.kmrf.scheduler.service.auth.ResetPasswordService;
@@ -38,7 +38,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestBody @Valid RequestAuth request) {
+    public ResponseEntity<?> authenticate(@RequestBody @Valid AuthRequest request) {
         try {
             return ResponseEntity.ok(authService.authenticate(request.getEmail(), request.getPassword()));
         } catch (AuthenticationException e) {
@@ -48,7 +48,7 @@ public class AuthController {
 
     @Validated(OnCreate.class)
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid RequestUser request) {
+    public ResponseEntity<?> register(@RequestBody @Valid UserRequest request) {
         try {
             return ResponseEntity.ok(authService.register(request));
         } catch (AuthenticationException e) {
@@ -81,7 +81,7 @@ public class AuthController {
     }
 
     @PostMapping("/updatePassword")
-    public ResponseEntity<?> updatePassword(@RequestBody @Valid RequestPassword request, @RequestHeader("Token") String token) {
+    public ResponseEntity<?> updatePassword(@RequestBody @Valid PasswordRequest request, @RequestHeader("Token") String token) {
         try {
             return ResponseEntity.ok(resetPasswordService.updatePassword(token, request.getPassword()));
         } catch (RuntimeException e) {

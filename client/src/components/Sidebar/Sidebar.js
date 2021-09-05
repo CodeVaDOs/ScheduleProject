@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Drawer, Icon, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
+import { Divider, Drawer, Icon, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import { Chat, Dashboard, Group, Schedule, SupervisedUserCircle } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#2A3042',
     border: 'none',
     color: '#A6B0CF',
-    paddingTop: '68px',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
@@ -27,6 +26,14 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     color: 'inherit'
+  },
+  logoContainer: {
+    height: '68px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottom: '1px solid #A6B0CF',
+    boxSizing: 'border-box'
   }
 }));
 
@@ -74,7 +81,9 @@ const Sidebar = ({ open, drawerWidth }) => {
         paper: clsx(!open && classes.drawerPaperClose, classes.drawerPaper)
       }}
       anchor="left">
-
+      <div className={classes.logoContainer}>
+        <Typography>Scheduler</Typography>
+      </div>
       {listOfLinks.map(l => (
         <Link style={getIconColorStyle(l.to === activePath)} className={classes.link} to={l.to}>
           <ListItem button>

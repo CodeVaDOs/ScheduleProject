@@ -20,7 +20,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-public class RequestUser extends BaseEntity {
+public class UserRequest extends BaseEntity {
     @NotNull(groups = OnUpdate.class, message = "user id is required")
     private Long id;
 

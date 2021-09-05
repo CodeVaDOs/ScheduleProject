@@ -4,9 +4,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ua.kiev.kmrf.scheduler.dto.request.RequestGroup;
+import ua.kiev.kmrf.scheduler.dto.request.GroupRequest;
 import ua.kiev.kmrf.scheduler.dto.request.groups.OnCreate;
-import ua.kiev.kmrf.scheduler.entity.group.Group;
+import ua.kiev.kmrf.scheduler.dto.response.GroupResponse;
+import ua.kiev.kmrf.scheduler.facade.GroupFacade;
 import ua.kiev.kmrf.scheduler.service.GroupService;
 
 import java.util.List;
@@ -15,23 +16,24 @@ import java.util.List;
 @RequestMapping("/api/v1/groups")
 public class GroupController {
     private final GroupService groupService;
+    private final GroupFacade groupFacade;
 
-    public GroupController(GroupService groupService) {
+    public GroupController(GroupService groupService, GroupFacade groupFacade) {
         this.groupService = groupService;
+        this.groupFacade = groupFacade;
     }
 
     @PostMapping
     @PreAuthorize("hasAuthority('write')")
     @Validated(OnCreate.class)
-    public ResponseEntity<Group> createGroup(@RequestBody RequestGroup requestGroup) {
-        Group group = requestGroup.toEntity();
-        return ResponseEntity.ok(groupService.createGroup(group));
+    public ResponseEntity<GroupResponse> createGroup(@RequestBody GroupRequest groupRequest) {
+        return ResponseEntity.ok(groupFacade.createGroup(groupRequest));
     }
 
     @GetMapping
     @PreAuthorize("hasAuthority('getTotal')")
-    public ResponseEntity<List<Group>> getAllGroups() {
-        return ResponseEntity.ok(groupService.getAllGroups());
+    public ResponseEntity<List<GroupResponse>> getAllGroups() {
+        return ResponseEntity.ok(groupFacade.getAll());
     }
 
     @DeleteMapping

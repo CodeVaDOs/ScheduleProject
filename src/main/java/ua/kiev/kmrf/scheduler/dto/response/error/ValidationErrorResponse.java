@@ -1,4 +1,4 @@
-package ua.kiev.kmrf.scheduler.dto.response;
+package ua.kiev.kmrf.scheduler.dto.response.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

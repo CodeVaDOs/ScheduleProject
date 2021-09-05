@@ -5,8 +5,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import ua.kiev.kmrf.scheduler.dto.response.ExceptionResponse;
-import ua.kiev.kmrf.scheduler.dto.response.ValidationErrorResponse;
+import ua.kiev.kmrf.scheduler.dto.response.error.ExceptionResponse;
+import ua.kiev.kmrf.scheduler.dto.response.error.ValidationErrorResponse;
 import ua.kiev.kmrf.scheduler.util.Violation;
 
 

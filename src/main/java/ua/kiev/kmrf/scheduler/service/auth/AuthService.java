@@ -6,7 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ua.kiev.kmrf.scheduler.dto.request.RequestUser;
+import ua.kiev.kmrf.scheduler.dto.request.UserRequest;
 import ua.kiev.kmrf.scheduler.entity.refreshToken.RefreshToken;
 import ua.kiev.kmrf.scheduler.entity.user.User;
 import ua.kiev.kmrf.scheduler.exception.JwtAuthenticationException;
@@ -75,12 +75,12 @@ public class AuthService {
         return createTokens(user);
     }
 
-    public Map<Object, Object> register(RequestUser requestUser) {
-        if (userRepository.findByEmail(requestUser.getEmail()).isPresent()) {
-            throw new UserAlreadyExistException(requestUser.getEmail());
+    public Map<Object, Object> register(UserRequest userRequest) {
+        if (userRepository.findByEmail(userRequest.getEmail()).isPresent()) {
+            throw new UserAlreadyExistException(userRequest.getEmail());
         }
 
-        User user = userRepository.save(requestUser.toEntity());
+        User user = userRepository.save(userRequest.toEntity());
         return createTokens(user);
     }
 

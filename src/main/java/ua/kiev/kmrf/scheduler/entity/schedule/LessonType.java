@@ -23,7 +23,7 @@ public class LessonType extends BaseEntity {
     private String lessonType;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "lesson_type", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "lessonType", fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Schedule> pairSchedules = new ArrayList<>();
 }

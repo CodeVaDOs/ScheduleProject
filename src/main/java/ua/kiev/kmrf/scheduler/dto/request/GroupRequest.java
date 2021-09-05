@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-public class RequestGroup extends BaseEntity {
+public class GroupRequest extends BaseEntity {
 
     @NotBlank(groups = {OnCreate.class, OnUpdate.class}, message = "Group name is required")
     private String name;
