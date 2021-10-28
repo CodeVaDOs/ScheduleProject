@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.kiev.kmrf.scheduler.dto.request.UserRequest;
+import ua.kiev.kmrf.scheduler.dto.request.auth.AuthRequest;
 import ua.kiev.kmrf.scheduler.entity.refreshToken.RefreshToken;
 import ua.kiev.kmrf.scheduler.entity.user.User;
 import ua.kiev.kmrf.scheduler.exception.JwtAuthenticationException;
@@ -70,18 +71,18 @@ public class AuthService {
     }
 
     public Map<Object, Object> authenticate(String email, String password) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         User user = userRepository.findByEmail(email).orElseThrow(() -> new NoDataFoundException("User doesn't exists"));
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         return createTokens(user);
     }
 
-    public Map<Object, Object> register(UserRequest userRequest) {
-        if (userRepository.findByEmail(userRequest.getEmail()).isPresent()) {
-            throw new UserAlreadyExistException(userRequest.getEmail());
+    public Map<Object, Object> register(String email, String password) {
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new UserAlreadyExistException(email);
         }
 
-        User user = userRepository.save(userRequest.toEntity());
-        return createTokens(user);
+        userRepository.save(new User(passwordEncoder.encode(password), email));
+        return authenticate(email, password);
     }
 
     public Map<Object, Object> refresh(String refreshToken) {

@@ -21,6 +21,13 @@ const routes = [
     isPublic: false,
     isAdminRoute: true,
     exact: true,
+    path: '/groups/:groupId',
+    component: lazy(() => import('../pages/GroupDetailsPage/GroupDetailsPage'))
+  },
+  {
+    isPublic: false,
+    isAdminRoute: true,
+    exact: true,
     path: '/users',
     component: lazy(() => import('../pages/UsersPage/UsersPage'))
   },

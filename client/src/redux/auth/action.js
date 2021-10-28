@@ -38,7 +38,26 @@ const logIn = (values) => (dispatch) => {
 };
 
 
+const register = (values) => (dispatch) => {
+  dispatch({ type: authConstants.LOGIN_REQUEST });
+  setAuthToken();
+  setRefreshToken();
+
+  api.post('auth/register', values)
+    .then((data) => {
+      console.log('success register in');
+      setAuthToken(data.token);
+      setRefreshToken(data.refreshToken);
+      dispatch({ type: authConstants.LOGIN_SUCCESS, payload: data.user });
+      dispatch(getProfile());
+    })
+    .catch((err) => {
+      dispatch({ type: authConstants.LOGIN_FAILURE });
+    });
+};
+
 export const AUTH_ACTIONS = {
+  register,
   logIn,
   logOut,
   getProfile

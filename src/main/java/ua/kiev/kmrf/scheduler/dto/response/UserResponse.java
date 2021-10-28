@@ -1,5 +1,6 @@
 package ua.kiev.kmrf.scheduler.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -9,10 +10,12 @@ import ua.kiev.kmrf.scheduler.entity.user.User;
 
 import java.util.Date;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+//@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class UserResponse extends BaseEntity  {
+@AllArgsConstructor
+@Data
+public class UserResponse  {
+    private Long id;
     private Role role;
     private String email;
     private String firstName;

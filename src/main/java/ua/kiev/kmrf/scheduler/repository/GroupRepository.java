@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ua.kiev.kmrf.scheduler.entity.group.Group;
 
 @Repository
-public interface GroupRepository  extends JpaRepository<Group, Long> {
+public interface GroupRepository  extends RepositoryInterface<Group> {
 }

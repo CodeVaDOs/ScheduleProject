@@ -48,9 +48,9 @@ public class AuthController {
 
     @Validated(OnCreate.class)
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid UserRequest request) {
+    public ResponseEntity<?> register(@RequestBody @Valid AuthRequest request) {
         try {
-            return ResponseEntity.ok(authService.register(request));
+            return ResponseEntity.ok(authService.register(request.getEmail(), request.getPassword()));
         } catch (AuthenticationException e) {
             return new ResponseEntity<>("Error with registration: " + e.getMessage(), HttpStatus.FORBIDDEN);
         }

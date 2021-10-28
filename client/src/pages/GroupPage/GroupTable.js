@@ -3,22 +3,26 @@ import { Table, TableBody, TableContainer, TableFooter, TableHead, TableRow } fr
 import Paper from '@material-ui/core/Paper';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const GroupTable = ({ groups, createModal, infoModal }) => {
 
-  const createRow = (group) => ({ name: group.name });
+
+
 
   return (
     <TableContainer component={Paper}>
       <Table size="small">
         <TableHead>
           <TableCell>Название группы</TableCell>
+          <TableCell>Количество студентов</TableCell>
         </TableHead>
         <TableBody>
-          {groups.map(createRow).map(group => (
-            <TableRow key={group.name}>
-              <TableCell>{group.name}</TableCell>
-            </TableRow>
+          {groups.map(group => (
+              <TableRow key={group.name}>
+                <TableCell><Link to={`/groups/${group.id}`}>{group.name}</Link></TableCell>
+                <TableCell>{group.countStudents}</TableCell>
+              </TableRow>
           ))}
         </TableBody>
         <TableFooter>

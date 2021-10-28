@@ -33,15 +33,11 @@ public class User extends BaseEntity {
     private Date birthday;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.STUDENT;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     private Group group;
-
-    public String getGroupName() {
-        return group.getName();
-    }
 
     public User(String password, String email) {
         this.password = password;

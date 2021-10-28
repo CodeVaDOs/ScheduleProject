@@ -44,7 +44,7 @@ public class ControllerAdvice {
     }
 
     @ResponseBody
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ExceptionResponse onMethodArgumentNotValidException(RuntimeException ex) {
         return new ExceptionResponse(ex.getMessage());
